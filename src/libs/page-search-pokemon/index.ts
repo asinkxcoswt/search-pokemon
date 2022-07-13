@@ -1,1 +1,1 @@
-export * from "./PokemonSearchWidget";
+export * from "./PokemonSearchPage";
