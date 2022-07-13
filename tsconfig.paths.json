@@ -2,8 +2,10 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@context-overlay": ["libs/context-overlay/index.ts"],
-      "@widget-search-pokemon": ["libs/widget-search-pokemon/index.ts"]
+      "@middleware-overlay": ["libs/middleware-overlay/index.ts"],
+      "@middleware-apollo-client": ["libs/middleware-apollo-client/index.ts"],
+      "@data-pokemon": ["libs/data-pokemon/index.ts"],
+      "@page-search-pokemon": ["libs/page-search-pokemon/index.ts"]
     }
   }
 }
