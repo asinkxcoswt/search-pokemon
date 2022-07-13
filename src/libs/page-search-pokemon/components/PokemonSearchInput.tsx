@@ -1,5 +1,5 @@
-export interface PokemonSearchBoxProps {}
+export interface PokemonSearchInputProps {}
 
-export function PokemonSearchBox(props: PokemonSearchBoxProps) {
-  return <>This is PokemonSearchBox</>;
+export function PokemonSearchInput(props: PokemonSearchInputProps) {
+  return <>This is PokemonSearchInputProps</>;
 }

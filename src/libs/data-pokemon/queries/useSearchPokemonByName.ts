@@ -2,8 +2,10 @@ import { usePokemonQuery } from "../gen/generated";
 import { Pokemon } from "../models/pokemon-models";
 
 /**
- * - If the input name === "", skip API call and return pokemon = undefined
- * - If no pokemon found, return pokemon = undefined
+ * Wrapper of Apollo's query to
+ * - map API data to local Pokemon model and provide default value safeguard
+ * - skip API call and return pokemon = undefined when the input name === "",
+ * - return pokemon = undefined when no pokemon found for the given name
  */
 export function useSearchPokemonByName(name: string): {
   pokemon?: Pokemon;
