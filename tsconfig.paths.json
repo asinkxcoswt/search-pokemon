@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@context-overlay": ["libs/context-overlay/index.ts"],
+      "@widget-search-pokemon": ["libs/widget-search-pokemon/index.ts"]
+    }
+  }
+}
