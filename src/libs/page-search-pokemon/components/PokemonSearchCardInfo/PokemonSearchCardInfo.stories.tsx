@@ -13,7 +13,17 @@ const Template: ComponentStory<typeof PokemonSearchCardInfo> = (args) => (
   <PokemonSearchCardInfo {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const Bulbasaur = Template.bind({});
+Bulbasaur.args = {
   pokemon: Examples.Bulbasaur,
+};
+
+export const Charmander = Template.bind({});
+Charmander.args = {
+  pokemon: Examples.Charmander,
+};
+
+export const Squirtle = Template.bind({});
+Squirtle.args = {
+  pokemon: Examples.Squirtle,
 };

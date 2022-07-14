@@ -1,1 +1,1 @@
-export * from "./NormalLoader/NormalLoader";
+export * from "./LoadingOverlay/LoadingOverlay";

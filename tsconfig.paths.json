@@ -4,6 +4,8 @@
     "paths": {
       "@middleware-apollo-client": ["libs/middleware-apollo-client/index.ts"],
       "@data-pokemon": ["libs/data-pokemon/index.ts"],
+      "@ui-loading": ["libs/ui-loading/index.ts"],
+      "@ui-cards": ["libs/ui-cards/index.ts"],
       "@page-search-pokemon": ["libs/page-search-pokemon/index.ts"]
     }
   }
