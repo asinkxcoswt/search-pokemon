@@ -1,46 +1,91 @@
-# Getting Started with Create React App
+# Pokemon Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A CRA app for practicing front-end development.
 
-## Available Scripts
+# Tech Stack
 
-In the project directory, you can run:
+1. React (create-react-app)
+2. Storybook
+3. graphql-codegen
+4. Tailwind (Flowbite)
+5. Pokemon Graphql API
 
-### `yarn start`
+# Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the source code: `git clone git@github.com:asinkxcoswt/search-pokemon.git`
+2. Install dependencies: `cd search-pokemon; yarn install`
+3. Generate Graphql client: `yarn gen`
+4. Run the unit tests: `yarn test`
+5. Run the Storybook: `yarn storybook`, and open `http://localhost:6006/` in your browser.
+6. Run the app: `yarn start`, and open `http://localhost:3000/` in your browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Application State Diagram
 
-### `yarn test`
+![Application State Diagram](./documentation/application-state-diagram.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Empty
 
-### `yarn build`
+![empty](./documentation/empty.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## NOT_FOUND
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![not found](./documentation/not_found.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## FOUND
 
-### `yarn eject`
+![found](./documentation/found.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Code Architecture
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![found](./documentation/code_architecture.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The structure is inspired by [NX](https://nx.dev/structure/library-types).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Library Types
 
-## Learn More
+1. **data**: contain hooks and interfaces responsible for talking with the back-end
+2. **middleware**: contain components that provide backbone functions (through React Context API) for the entire app. In this case we have only 1 middleware `middleware-apollo-client` to provide the set up for the Apollo graphql client.
+3. **ui**: contain dump UI components. They will not have access to data other than what are supplied through the props.
+4. **page**: represent a page in the app. AKA the 'P' in MVP architecture.f It wires up everything to provide a useful feature for the app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Library Dependency
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**page** can depend on
+
+- ui
+- data
+- middleware
+
+**data** can depend on
+
+- middleware
+
+**middleware** can depend on
+
+- ui
+
+**ui** cannot depend on other library
+
+# Code Generation
+
+We use `@graphql-codgen` to generate the typescript function to connect with the Graphql back-end.
+
+1. Define the desired graphql operation in `data-***` module, see example in `src/libs/data-pokemon/operations.graphql`
+
+2. Edit `codegen.yml` to include the file.
+3. Run `yarn gen`
+4. The generated file will be placed in `src/libs/data-***/gen/generated.tsx`
+5. It is recommended to encapsulate the generated code within the data module, by create a wrapper function that accounts for specific use cases and export it from `index.ts`, see `src/libs/data-pokemon/queries`.
+6. Create jest `__mocks__` inside the `gen` directory and provide a mock implementation so that we can run the test without calling the external API.
+
+# Unit Testing
+
+In this architecture, we can write as many tests as we want by creating the `***.text.ts(x)` file together with any function or component.
+
+But the test for each page is mandatory. Inside a page module (`page-***`), there should be `***Page.tsx` and `***Page.test.tsx`.
+
+And for the app to be independently testable, every `data-***` module should provide the `__mocks__` implementations for any function talking to the external environment.
+
+# Storybook
+
+Every TSX component `***.tsx` should have the corresponding story file `***.stories.tsx`, in which should contain at least 1 story, see `src/libs/page-search-pokemon/components/PokemonSearchCardInfo/PokemonSearchCardInfo.stories.tsx` for an example.
