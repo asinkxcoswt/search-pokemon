@@ -1,5 +1,4 @@
 import { PlainCard } from "@ui-cards";
-import { Card } from "flowbite-react";
 
 export interface PokemonSearchCardPlaceholderProps {}
 
