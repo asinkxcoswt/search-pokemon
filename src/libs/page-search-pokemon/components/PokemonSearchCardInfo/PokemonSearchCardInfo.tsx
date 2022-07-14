@@ -124,7 +124,9 @@ function DetailLine({ label, value }: { label: string; value: string }) {
   return (
     <Table.Row>
       <Table.HeadCell className="pt-2 pb-2">{label}</Table.HeadCell>
-      <Table.Cell className="pt-2 pb-2">{value}</Table.Cell>
+      <Table.Cell className="pt-2 pb-2" role={`_test${label}`}>
+        {value}
+      </Table.Cell>
     </Table.Row>
   );
 }
