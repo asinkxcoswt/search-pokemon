@@ -19,6 +19,16 @@ A CRA app for practicing front-end development.
 5. Run the Storybook: `yarn storybook`, and open `http://localhost:6006/` in your browser.
 6. Run the app: `yarn start`, and open `http://localhost:3000/` in your browser.
 
+# Note for Assignment Evaluation
+
+1. The pokemon Typescript interface: `src/libs/data-pokemon/models/pokemon-models.ts`
+
+2. The mock implementation of the api client with the 3 pokemons: `src/libs/data-pokemon/gen/__mocks__/generated.tsx`
+
+3. The jest test suite that uses the mock and verifies that each pokemon is the correct type: `src/libs/page-search-pokemon/PokemonSearchPage.test.tsx`
+
+4. The search pokemon component: `src/libs/page-search-pokemon/PokemonSearchPage.tsx`
+
 # Application State Diagram
 
 ![Application State Diagram](./documentation/application-state-diagram.png)
