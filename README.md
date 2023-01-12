@@ -98,4 +98,4 @@ And for the app to be independently testable, every `data-***` module should pro
 
 # Storybook
 
-Every TSX component `***.tsx` should have the corresponding story file `***.stories.tsx`, in which should contain at least 1 story, see `src/libs/page-search-pokemon/components/PokemonSearchCardInfo/PokemonSearchCardInfo.stories.tsx` for an example.
+Every TSX component `***.tsx` should have the corresponding story file `***.stories.tsx`, in which should contain at least 1 story, see `src/libs/page-search-pokemon/components/PokemonSearchCardInfo/PokemonSearchCardInfo.stories.tsx` for an example. z
